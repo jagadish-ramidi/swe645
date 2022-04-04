@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	stages {
-		stage(Building the Student Survey Image") {
+		stage("Building the Student Survey Image") {
 			steps {
 				script {
 					checkout scm
