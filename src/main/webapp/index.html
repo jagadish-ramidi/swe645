@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Studen Survey Form</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	<link href="css/hw1.css" rel="stylesheet" type="text/css">
+	<script src="js/hw1.js"></script>
+</head>
+<body>
+	            <form id="regForm">
+	                <h1 id="register">Survey Form</h1>
+	                    <p> <input placeholder="First Name..." class="textBoxOnly" oninput="this.className = 'textBoxOnly'" name="fname"></p>
+	                    <p> <input placeholder="Last Name..." class="textBoxOnly" oninput="this.className = 'textBoxOnly'" name="lname"></p>
+	                    <p> <input placeholder="Email..." class="textBoxOnly" oninput="this.className = 'textBoxOnly'" name="email"></p>
+	                    <p> <input placeholder="Telephone Number..." class="textBoxOnly" oninput="this.className = 'textBoxOnly'" name="phone"></p>
+	                    <p> <input placeholder="Date Of Survey..." class="textBoxOnly" oninput="this.className = 'textBoxOnly'" name="dos"></p>
+	                    <p> <input placeholder="Street Address..." class="textBoxOnly" oninput="this.className = 'textBoxOnly'" name="saddr"></p>
+	                     <p> <input placeholder="City..." class="textBoxOnly" oninput="this.className = 'textBoxOnly'" name="city"></p>
+	                    <p> <input placeholder="State..." class="textBoxOnly" oninput="this.className = 'textBoxOnly'" name="state"></p>
+	                    <p> <input placeholder="Zip Code..." class="textBoxOnly" oninput="this.className = 'textBoxOnly'" name="zip"></p>
+						
+						<div><p> What did you like at the university?</p></div>	
+							
+							<input type='checkbox' name='thing' value='valuable' id="thing"/><label for="thing"></label> <label>Students</label>
+							<br>
+							<input type='checkbox' name='thing1' value='valuable2' id="thing1"/><label for="thing1"></label> <label>location</label>
+							<br>
+							<input type='checkbox' name='thing2' value='valuable3' id="thing2"/><label for="thing2"></label> <label>campus</label>
+							<br>
+							<input type='checkbox' name='thing2' value='valuable3' id="thing2"/><label for="thing2"></label> <label>Atmosphere</label>
+							<br>
+							<input type='checkbox' name='thing3' value='valuable4' id="thing3"/><label for="thing3"></label> <label>Dorm rooms</label>
+							<br>
+							<input type='checkbox' name='thing4' value='valuable5' id="thing4"/><label for="thing4"></label> <label>sports</label>
+						<div><p> Where did you hear about the university?</p></div>	
+							<div class="col-sm-12">
+							  <div class="form-group">
+							    <label for="A1">
+							        <input type="radio" name="Q1" id="A1" value="1"  checked/> Friends
+							      </label>
+							  </div>
+							  <div class="form-group">
+							    <label for="A2">
+							        <input type="radio" name="Q1" id="A2" value="2" /> Televsion
+							      </label>
+							  </div>
+							  <div class="form-group">
+							    <label for="A2">
+							        <input type="radio" name="Q1" id="A2" value="2" /> Internet
+							      </label>
+							  </div>
+							  <div class="form-group">
+							    <label for="A2">
+							        <input type="radio" name="Q1" id="A2" value="2" /> Other
+							      </label>
+							  </div>
+							</div>
+						</div>
+	                </div>
+	                <div class="tab">
+	                    <h6>Would you recommend Others?</h6>
+	                    <select placeholder="Please select an option">
+	                    	<option>very Likely</option>
+	                    	<option>Likely</option>
+	                    	<option>UnLikely</option>
+	                    </select>
+	                </div>
+	                <br/>
+	                <div>
+	                	<label>Please enter any additional comments</label>
+	                	<textarea placeholder="Please enter any additional comments" class="textBoxOnly">
+	                	
+	                	</textarea>
+	                </div>
+	                <label>Raffle</label>
+	                 <p> <input placeholder="Please enter atleast 10 comma seperated numbers ranging 1 to 100" class="textBoxOnly" oninput="this.className = 'textBoxOnly'" name="raffle"></p>
+	                
+	                <label for="submit" id="submit-label">
+			          <input id="submit" type="submit" value="Submit">
+			        </label>
+			        <label for="cancel" id="cancel-label" >
+			          <input id="cancel" type="submit" value="Cancel">
+			        </label>
+	                
+	            </form>
+</body>
+</html>
