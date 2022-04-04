@@ -7,7 +7,7 @@ pipeline {
 					checkout scm
 					sh 'rm -rf *.war'
 					sh 'jar -cvf Hw1.war -C WebContent/ .'
-					sh 'echo ${BUILD TIMESTAMP}"
+					sh 'echo ${BUILD TIMESTAMP}'
 					sh "docker login -u hekme5 -p $(DOCKERHUB PASS]"
 					def customImage = docker.build("jagadishramidi/swe645:$(BUILD_TIMESTAMP}")
 				}
@@ -29,7 +29,7 @@ pipeline {
 		}
 		stage("Deploying to Rancher as with load balancer") {
 			steps {
-				sh "kubectl set image deployment/swehw2 swehw2=jagadishramidi/swe645:$(BUILD_TIMESTAMP} -n jenkins-pipeline'
+				sh 'kubectl set image deployment/swehw2 swehw2=jagadishramidi/swe645:$(BUILD_TIMESTAMP} -n jenkins-pipeline'
 			}
 		}
 	}
