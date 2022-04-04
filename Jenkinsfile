@@ -8,7 +8,7 @@ pipeline {
 					sh 'rm -rf *.war'
 					sh 'jar -cvf Hw1.war -C WebContent/ .'
 					sh 'echo ${BUILD TIMESTAMP}'
-					sh "docker login -u hekme5 -p $(DOCKERHUB PASS]"
+					sh "docker login -u jagadishramidi -p Keesara?593649"
 					def customImage = docker.build("jagadishramidi/swe645:$(BUILD_TIMESTAMP}")
 				}
 			}
