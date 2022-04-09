@@ -1,36 +1,46 @@
 pipeline {
-	agent any
-	stages {
-		stage("Building the Student Survey Image") {
-			steps {
-				script {
-					checkout scm
-					sh 'rm -rf *.war'
-					sh 'jar -cvf Hw1.war -C WebContent/ .'
-					sh 'echo ${BUILD TIMESTAMP}'
-					sh "docker login -u jagadishramidi -p Keesara?593649"
-					def customImage = docker.build("jagadishramidi/swe645:${BUILD_TIMESTAMP}")
-				}
+    agent any
+    environment {
+        PROJECT_ID = 'swe645hw2'
+        CLUSTER_NAME = 'swe645hw2'
+        LOCATION = 'us-east-1a'
+    }
+    stages {
+        stage("Checkout code") {
+            steps {
+                checkout scm
+            }
+        }
+        stage('BuildWAR') {
+            steps {
+				echo 'Creating the Jar ...'
+				sh 'java -version'
+				sh 'jar -cvf hw2.war -C WebContent/ .'
+            }
+        }
+        stage("Build image") {
+            steps {
+                script {
+                    myapp = docker.build("jagadishramidi/swe645:${env.BUILD_ID}")
+                }
+            }
+        }
+        stage("Push image") {
+            steps {
+                script {
+					docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+					myapp.push("latest")
+					myapp.push("${env.BUILD_ID}")
+                    }
+                }
+            }
+        }        
+        stage("UpdateDeployment") {
+			steps{
+				sh 'kubectl config view'
+				sh "kubectl get deployments"
+				sh "kubectl set image deployment/survey-app swe645hw2=hy950921/swe645hw2:${env.BUILD_ID}"
 			}
 		}
-		stage("Pushing Image to DockerHub") {
-			steps {
-				script {
-					sh 'docker push jagadishramidi/swe645:${BUILD_TIMESTAMP}'
-				}
-			}
-		}
-		stage("Deploying to Rancher as single pod") {
-			steps {
-				script{
-					sh "kubectl set image deployment/swe645hw2 swe645hw2=jagadishramidi/swe645:${BUILD_TIMESTAMP} -n jenkins-pipeline"
-				}
-			}
-		}
-		stage("Deploying to Rancher as with load balancer") {
-			steps {
-				sh 'kubectl set image deployment/swehw2 swehw2=jagadishramidi/swe645:${BUILD_TIMESTAMP} -n jenkins-pipeline'
-			}
-		}
-	}
+    }    
 }
