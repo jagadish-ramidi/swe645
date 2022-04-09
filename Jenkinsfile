@@ -15,7 +15,8 @@ pipeline {
             steps {
 				echo 'Creating the Jar ...'
 				sh 'java -version'
-				sh 'jar -cvf Hw1.war ./src/main/webapp/*.*'
+				sh 'cd src/main/webapp'
+				sh 'jar -cvf Hw1.war *'
             }
         }
         stage("Build image") {
