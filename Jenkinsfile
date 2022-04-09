@@ -15,8 +15,8 @@ pipeline {
             steps {
 				echo 'Creating the Jar ...'
 				sh 'java -version'
-				sh 'sudo rm -r test/* test/.*'
-				sh 'sudo rmdir test'
+				sh 'rm -r test/* test/.*'
+				sh 'rmdir test'
 				sh 'mkdir test'
 				sh 'sudo cp -r src/main/webapp/* test/'
 				sh 'jar -cvf Hw1.war test/*'
