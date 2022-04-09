@@ -15,7 +15,7 @@ pipeline {
             steps {
 				echo 'Creating the Jar ...'
 				sh 'java -version'
-				sh 'jar -cvf hw2.war -C WebContent/ .'
+				sh 'jar -cvf hw2.war -C .'
             }
         }
         stage("Build image") {
