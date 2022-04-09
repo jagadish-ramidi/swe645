@@ -15,8 +15,11 @@ pipeline {
             steps {
 				echo 'Creating the Jar ...'
 				sh 'java -version'
-				sh 'cd src/main/webapp'
-				sh 'jar -cvf Hw1.war META-INF WEB-INF css index.html js'
+				sh 'sudo rm -r test/* test/.*'
+				sh 'sudo rmdir test'
+				sh 'mkdir test'
+				sh 'sudo cp -r src/main/webapp/* test/'
+				sh 'jar -cvf Hw1.war test/*'
             }
         }
         stage("Build image") {
