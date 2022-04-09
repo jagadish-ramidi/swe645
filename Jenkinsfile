@@ -37,7 +37,7 @@ pipeline {
 			steps{
 				sh 'kubectl config view'
 				sh "kubectl get deployments"
-				sh "kubectl set image deployment/swe645deployment sandbox=jagadishramidi/swe645:${env.BUILD_ID}"
+				sh "kubectl set image deployment/swe645deployment container-0=jagadishramidi/swe645:${env.BUILD_ID}"
 			}
 		}
     }    
