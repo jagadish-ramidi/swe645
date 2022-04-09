@@ -29,7 +29,6 @@ pipeline {
             steps {
                 script {
 					myapp.push("${env.BUILD_ID}")
-                    }
                 }
             }
         }        
