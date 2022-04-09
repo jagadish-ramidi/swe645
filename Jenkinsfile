@@ -28,6 +28,7 @@ pipeline {
         stage("Push image") {
             steps {
                 script {
+                	sh 'sudo docker login'
 					myapp.push("${env.BUILD_ID}")
                 }
             }
