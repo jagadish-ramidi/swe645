@@ -13,11 +13,15 @@ pipeline {
         }
         stage('BuildWAR') {
             steps {
-				echo 'Creating the Jar ...'
-				sh 'java -version'
-				sh 'jar -cvf Hw1.war src/main/webapp/'
+            
+            	dir('src/main/webapp') {
+            		echo 'Creating the Jar ...'
+					sh 'java -version'
+					sh 'jar -cvf Hw1.war *'
+            	}
             }
         }
+        
         stage("Build image") {
             steps {
                 script {
